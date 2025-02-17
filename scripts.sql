@@ -37,20 +37,20 @@ service postgresql restart
 systemctl restart postgresql@14-main
 systemctl status postgresql@14-main
 
-CREATE ROLE comita_user_test WITH LOGIN PASSWORD '3B15XBI342';
-CREATE GROUP "e416_applmbfs-comita-otkazm-test-a";
-ALTER GROUP "e416_applmbfs-comita-otkazm-test-a" add user "spozdny";
-ALTER GROUP имя_группы RENAME TO новое_имя;
-ALTER USER comita_user_test WITH PASSWORD '3B15XBI342';
-DROP ROLE comita_user_test;
-GRANT pg_write_all_data TO gpavlin;
-GRANT pg_read_all_data TO gpavlin;
-REVOKE pg_write_all_data FROM gpavlin;
-REVOKE pg_read_all_data FROM gpavlin;
+CREATE ROLE user_name WITH LOGIN PASSWORD 'your_password';
+CREATE GROUP "group_name";
+ALTER GROUP "group_name" add user "user_name";
+ALTER GROUP group_name RENAME TO new_group_name;
+ALTER USER user_name WITH PASSWORD 'new_password';
+DROP ROLE user_name;
+GRANT pg_write_all_data TO user_name;
+GRANT pg_read_all_data TO user_name;
+REVOKE pg_write_all_data FROM user_name;
+REVOKE pg_read_all_data FROM user_name;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO myuser;
 
 CREATE DATABASE comita_otkazm_test OWNER comita_user_test;
-ALTER DATABASE _311p OWNER TO postgres;
-DROP DATABASE _311p_test;
-GRANT ALL PRIVILEGES ON DATABASE comita_otkazm_test to comita_user_test;
-ALTER DATABASE _311p_test OWNER TO comita_user_test;
+ALTER DATABASE db_name OWNER TO user_name;
+DROP DATABASE db_name;
+GRANT ALL PRIVILEGES ON DATABASE db_name to user_name;
+ALTER DATABASE db_name OWNER TO user_name;
